@@ -1,0 +1,44 @@
+--------------------- using switch case----------------------
+
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    int a,b,c;
+    char s,q;
+    cin>>a>>s>>b>>q>>c;
+    switch (s)
+    {
+    case '+':
+        cout<<((a+b==c)?"Yes":to_string(a + b));
+        break;
+         case '-':
+        cout<<((a-b==c)?"Yes":to_string(a - b));
+        break;
+         case '*':
+        cout<<((a*b==c)?"Yes":to_string(a * b));
+        break;
+    }
+    return 0;
+}
+
+-------------------------------using if else-----------------------------------
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    int A, B, C;
+    char S, Q;
+    cin >> A >> S >> B >> Q >> C;
+
+    int result;
+
+    if (S == '+') result = A + B;
+    else if (S == '-') result = A - B;
+    else if (S == '*') result = A * B;
+
+    if (result == C) cout << "Yes" << endl;
+    else cout << result << endl;
+
+    return 0;
+}
