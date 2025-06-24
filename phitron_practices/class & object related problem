@@ -33,7 +33,21 @@ int main()
     Student s1("Rahim",1,'A',55,10);
     Student s2("Karim",4,'A',85,10);
     Student s3("Sakib",9,'A',59,10);
-    Student heighest=s1;
+   Student top;
+
+if (s2.math_marks > s1.math_marks && s2.math_marks > s3.math_marks)
+    top = s2;
+else if (s3.math_marks > s1.math_marks && s3.math_marks > s2.math_marks)
+    top = s3;
+else
+    top = s1;
+ cout << "Topper: " << top.name << endl;
+    
+    return 0;
+}
+************************************************************************************************************************************************
+
+ Student heighest=s1;
     if(s2.math_marks>heighest.math_marks)
     {
         heighest=s2;
@@ -44,19 +58,6 @@ int main()
     }
     cout << "Top student: " << heighest.name << endl;
 
-    
-    return 0;
-}
-************************************************************************************************************************************************
-Student top;
-
-if (s2.math_marks > s1.math_marks && s2.math_marks > s3.math_marks)
-    top = s2;
-else if (s3.math_marks > s1.math_marks && s3.math_marks > s2.math_marks)
-    top = s3;
-else
-    top = s1;
- cout << "Topper: " << top.name << endl;
 
 
 -----------------------------using ternary operatot--------------------------------
