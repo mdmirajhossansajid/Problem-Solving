@@ -47,6 +47,16 @@ int main()
     
     return 0;
 }
+************************************************************************************************************************************************
+Student top;
+
+if (s2.math_marks > s1.math_marks && s2.math_marks > s3.math_marks)
+    top = s2;
+else if (s3.math_marks > s1.math_marks && s3.math_marks > s2.math_marks)
+    top = s3;
+else
+    top = s1;
+ cout << "Topper: " << top.name << endl;
 
 
 -----------------------------using ternary operatot--------------------------------
