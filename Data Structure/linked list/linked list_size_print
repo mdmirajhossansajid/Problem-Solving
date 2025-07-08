@@ -1,0 +1,54 @@
+practice problem 1----module6.5
+#include <bits/stdc++.h>
+using namespace std;
+
+class Node
+{
+public:
+    int val;
+    Node *next;
+    Node(int val)
+    {
+        this->val = val;
+        this->next = NULL;
+    }
+};
+
+int szz = 0;
+
+void insert_at_tail(Node* &head, Node* &tail, int val)
+{
+    Node* newnode = new Node(val);
+    szz++;
+
+    if (head == NULL)
+    {
+        head = newnode;
+        tail = newnode;
+        return;
+    }
+    tail->next = newnode;
+    tail = newnode;
+}
+
+int size_of_the_list()
+{
+    return szz;
+}
+
+int main()
+{
+    Node* head = NULL;
+    Node* tail = NULL;
+    int x;
+
+    // Input until EOF (Ctrl+D or -1 based)
+    while (cin >> x)
+    {
+        insert_at_tail(head, tail, x);
+    }
+
+    cout << size_of_the_list() << endl;
+
+    return 0;
+}
