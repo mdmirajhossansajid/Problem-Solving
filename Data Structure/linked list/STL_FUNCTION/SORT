@@ -1,0 +1,31 @@
+#include<bits/stdc++.h>
+using namespace std;
+void printing(list<int>&l)
+{
+    for(int val:l)
+    {
+        cout<<val<<" ";
+    }
+}
+int main()
+{
+   int val;
+
+    while (true)
+    {
+        list<int> l;
+
+        while (cin >> val && val != -1)
+        {
+            l.push_back(val);
+        }
+
+        if (l.empty()) break;
+
+        l.sort();
+        printing(l);
+    }
+
+
+    return 0;
+}
