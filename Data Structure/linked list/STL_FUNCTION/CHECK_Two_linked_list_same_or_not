@@ -1,0 +1,47 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+void printing(list<int> &l)
+{
+    for (int val : l)
+    {
+        cout << val << " ";
+    }
+}
+
+int main()
+{
+    int val;
+    while (true)
+    {
+        list<int> l;
+        list<int> l2;
+
+        // First list
+        while (cin >> val && val != -1)
+        {
+            l.push_back(val);
+        }
+
+        // Second list
+        while (cin >> val && val != -1)
+        {
+            l2.push_back(val);
+        }
+        if (l.empty() && l2.empty())
+        {
+            break;
+        }
+
+        if (l == l2)
+        {
+            cout << "YES" << endl;
+        }
+        else
+        {
+            cout << "NO" << endl;
+        }
+    }
+
+    return 0;
+}
