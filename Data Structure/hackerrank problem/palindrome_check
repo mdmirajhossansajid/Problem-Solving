@@ -1,3 +1,6 @@
+-----------------------------------Two pointer technique-----------------------------------------------
+
+
 #include<bits/stdc++.h>
 using namespace std;
 class Node
