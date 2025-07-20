@@ -1,0 +1,133 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+void delete_any_position(list<int>& l, int idx)
+{
+    if (idx < 0 || idx >= l.size()) return; 
+    auto it = l.begin();
+    for (int i = 0; i < idx; i++)
+    {
+        it++;
+    }
+    l.erase(it);
+}
+
+void print_forward(list<int>& l)
+{
+    cout << "L -> ";
+    for (int val : l)
+    {
+        cout << val << " ";
+    }
+    cout << endl;
+}
+
+void print_backward(list<int>& l)
+{
+    cout << "R -> ";
+    vector<int> temp(l.begin(), l.end());
+    reverse(temp.begin(), temp.end());
+    for (int val : temp)
+    {
+        cout << val << " ";
+    }
+    cout << endl;
+}
+
+int main()
+{
+    list<int> l;
+    int q;
+    cin >> q;
+    while (q--)
+    {
+        int x, v;
+        cin >> x >> v;
+        if (x == 0)
+        {
+            l.push_front(v);
+        }
+        else if (x == 1)
+        {
+            l.push_back(v);
+        }
+        else if (x == 2)
+        {
+            delete_any_position(l, v);
+        }
+
+        print_forward(l);
+        print_backward(l);
+    }
+    return 0;
+}
+
+
+Sample Input 0
+ 4
+ 0 10
+ 1 20
+ 1 30
+ 0 40
+ Sample Output 0
+ L -> 10 
+R -> 10 
+L -> 10 20 
+R -> 20 10 
+L -> 10 20 30 
+R -> 30 20 10 
+L -> 40 10 20 30 
+R -> 30 20 10 40 
+Sample Input 1
+ 9
+ 0 10
+ 2 1
+ 2 0
+ 1 20
+ 0 10
+ 2 2
+ 2 1
+ 2 2
+ 2 0
+ Sample Output 1
+ L -> 10 
+R -> 10 
+L -> 10 
+R -> 10 
+L -> 
+R -> 
+L -> 20 
+R -> 20 
+L -> 10 20 
+R -> 20 10 
+L -> 10 20 
+R -> 20 10 
+L -> 10 
+R -> 10 
+L -> 10 
+R -> 10 
+L -> 
+R -> 
+Sample Input 2
+ 11
+ 0 10
+ 2 5
+ 1 20
+ 1 30
+ 0 40
+ 2 0
+ 0 50
+ 2 2
+ 1 60
+ 2 3
+ 2 3
+ Sample Output 2
+ L -> 10 
+R -> 10 
+L -> 10 
+R -> 10 
+L -> 10 20 
+R -> 20 10 
+
+
+
