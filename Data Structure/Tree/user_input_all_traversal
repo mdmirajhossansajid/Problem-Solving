@@ -80,8 +80,8 @@ Node * Input_Tree()
         f->right=myright;
         if(f->left!=NULL)
             q.push(f->left);
-        if(f->left!=NULL)
-    q.push(f->left);
+        if(f->right!=NULL)
+    q.push(f->right);
 
     }
     return root;
