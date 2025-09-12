@@ -1,66 +1,69 @@
 #include<bits/stdc++.h>
 using namespace std;
-class Edge{
-    public:
-    int a,b,c;
-    Edge(int a,int b,int c)
-    {
-        this->a=a;
-        this->b=b;
-        this->c=c;
-    }
-
-};
-int dis[1005];
-vector<Edge>edgelist;
-int n,e;
-void bellmanford()
+int n, e;
+int adjmatrix[1005][1005];
+void floyd_warshall()
 {
-    for(int i=0;i<n-1;i++)
+    for (int k = 0; k < n; k++)
     {
-        for(auto ed:edgelist)
+        for (int i = 0; i < n; i++)
         {
-            int a,b,c;
-            a=ed.a;
-            b=ed.b;
-            c=ed.c;
-            if(dis[a]!=INT_MAX && dis[a]+c<dis[b])
-                dis[b]=dis[a]+c;
+            for (int j = 0; j < n; j++)
+            {
+               if(adjmatrix[i][k]!=INT_MAX && adjmatrix[k][j]!=INT_MAX && adjmatrix[i][k]+adjmatrix[k][j]<adjmatrix[i][j])
+                 adjmatrix[i][j]=adjmatrix[i][k]+adjmatrix[k][j];
+            }
+            
         }
+        
     }
-//extra one loop & check the previous value change or not, if the value change then the cycle is there;
-bool cycle=false;
-    for (auto ed : edgelist)
+    bool cycle=false;
+    for(int i=0;i<n;i++)
     {
-        int a, b, c;
-        a = ed.a;
-        b = ed.b;
-        c = ed.c;
-        if (dis[a] != INT_MAX && dis[a] + c < dis[b])
-           {
+        if(adjmatrix[i][i]<0)
             cycle=true;
-            break;
-           }
     }
     if(cycle)
-       cout<<"Cycle Detected";
+        cout<<"Cycle Detected";
     else
-        cout << " No Cycle Detected";
-}
+       {
+           for (int i = 0; i < n; i++)
+           {
+               for (int j = 0; j < n; j++)
+               {
+                   if (adjmatrix[i][j] == INT_MAX)
+                       cout << "I ";
+                   else
+                       cout << adjmatrix[i][j] << " ";
+               }
+               cout << endl;
+           }
+       } 
 
+    
+}
 int main()
 {
     cin>>n>>e;
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < n; j++)
+        {
+            if (i == j)
+                adjmatrix[i][j] = 0;
+            else
+                adjmatrix[i][j] = INT_MAX;
+        }
+    }
     while(e--)
     {
-        int a,b,c;cin>>a>>b>>c;
-        edgelist.push_back(Edge(a,b,c));
+        int a ,b,c;
+        cin>>a>>b>>c;
+        adjmatrix[a][b]=min(adjmatrix[a][b],c);
     }
-    for(int i=0;i<n;i++)
-    {
-        dis[i]=INT_MAX;
-    }
-    bellmanford();
+
+    floyd_warshall();
+
     
     return 0;
 }
