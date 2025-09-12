@@ -1,1 +1,48 @@
+#include<bits/stdc++.h>
+using namespace std;
+int i,j,k;
+int main()
+{
+    int n,e;cin>>n>>e;
+    int adjmatrix[n][n];
+    for(int i=0;i<n;i++)
+    {
+        for(int j=0;j<n;j++)
+        {
+            if(i==j)
+                adjmatrix[i][j]=0;
+            else
+            adjmatrix[i][j]=INT_MAX;
+        }
+    }
+    while(e--)
+    {
+        int a,b,c;cin>>a>>b>>c;
+        adjmatrix[a][b]=min(adjmatrix[a][b],c);
+    }
+    for ( k = 0; k < n; k++)
+    {
+        for (i = 0; i < n; i++)
+        {
+            for (j = 0; j < n; j++)
+            {
+                if (adjmatrix[i][k] != INT_MAX && adjmatrix[k][j] != INT_MAX && adjmatrix[i][k] + adjmatrix[k][j] < adjmatrix[i][j])
+                    adjmatrix[i][j] = adjmatrix[i][k] + adjmatrix[k][j];
+            }
+        }
+    }
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < n; j++)
+        {
+           if(adjmatrix[i][j]==INT_MAX)
+             cout<<"I ";
+           else
+               cout << adjmatrix[i][j] << " ";
+        }
+        cout << endl;
+    }
+
+    return 0;
+}
 
