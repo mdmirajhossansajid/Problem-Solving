@@ -1,0 +1,27 @@
+#include<bits/stdc++.h>
+using namespace std;
+int a;
+bool rec(int n)
+{
+    if(n==a)
+        return true;
+    else if(n>a)
+        return false;
+    bool l=rec(n*10);
+    bool r=rec(n*20);
+    return l||r;
+
+}
+int main()
+{
+    int t;cin>>t;
+    while(t--)
+    {
+        cin>>a;
+        if(rec(1))
+            cout<<"YES"<<endl;
+        else 
+            cout<<"NO"<<endl;
+    }
+    return 0;
+}
