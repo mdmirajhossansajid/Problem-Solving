@@ -20,11 +20,12 @@ int main()
         else
             nonone++;
       }
-      int total=nonone;
-      if(cntone%2==0)
-        cout<<total+(cntone/2)<<endl;
-    else
-      cout<<total+(cntone/2)+1<<endl;
+    //   int total=nonone;
+    //   if(cntone%2==0)
+    //     cout<<total+(cntone/2)<<endl;
+    // else
+    //   cout<<total+(cntone/2)+1<<endl;
+         cout<<nonone+(cntone+1)/2<<endl;
     }
     
 
