@@ -1,0 +1,21 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    int n,x;cin>>n>>x;
+    set<int>s;
+    for(int i=0;i<n;i++)
+    {   int val;cin>>val;
+        s.insert(val);
+    }
+    int cnt=0;
+    for (int i = 0; i < x; i++)
+    {
+        if(s.find(i)==s.end())
+            cnt++;
+    }
+    if(s.find(x)!=s.end())
+        cnt++;
+    cout<<cnt<<endl;
+    return 0;
+}
