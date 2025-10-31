@@ -1,0 +1,39 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    int n;
+    cin >> n;
+    // ans রাখবে → প্রথম নাম → শেষ নাম
+    // has রাখবে → বর্তমান নাম → আসল প্রথম নাম
+    map<string, string> ans, has;
+
+    for (int i = 0; i < n; i++)
+    {
+        string a, b;
+        cin >> a >> b;
+
+        // যদি এই নাম (a) আগে কারো old name হয়ে থাকে
+        if (has.find(a) != has.end())
+        {
+            string s = has[a]; // s = সেই চেইনের আসল প্রথম নাম
+            ans[s] = b;        // চেইনের শেষ নাম আপডেট করো
+            has.erase(a);      // পুরনো ম্যাপিং বাদ দাও
+            has[b] = s;        // নতুন নাম (b) এখন ওই চেইনের শেষ নাম
+        }
+        else
+        {
+            // নতুন নাম পরিবর্তন — নতুন চেইন শুরু
+            ans[a] = b;
+            has[b] = a;
+        }
+    }
+    cout << ans.size() << endl;
+    for (auto [x, y] : ans)
+    {
+        cout << x << " " << y << endl;
+    }
+
+    return 0;
+}
