@@ -45,4 +45,4 @@ int main() {
         cout << safe << "\n";
     }
     return 0;
-}
+} 
